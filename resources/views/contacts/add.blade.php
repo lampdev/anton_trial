@@ -81,6 +81,34 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('field_name') ? ' has-error' : '' }}">
+                            <label for="field_name" class="col-md-4 control-label">Custom field name</label>
+
+                            <div class="col-md-6">
+                                <input id="field_name" type="text" class="form-control" name="field_name"  value="{{ old('field_name') }}" required>
+
+                                @if ($errors->has('field_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('field_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('value') ? ' has-error' : '' }}">
+                            <label for="value" class="col-md-4 control-label">Custom field value</label>
+
+                            <div class="col-md-6">
+                                <input id="value" type="text" class="form-control" name="value"  value="{{ old('value') }}" required>
+
+                                @if ($errors->has('value'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('value') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\ContactsCustomFields;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -39,17 +40,25 @@ class ContactsController extends Controller
                 'first_name' => 'required|string|max:150',
                 'last_name' => 'required|string|max:150',
                 'email' => 'required|string|email|max:250',
+                'field_name' => 'required|string|max:255',
+                'value' => 'required|string|max:255',
                 'phone' => 'required|string|max:20',
                 'address' => 'required|string|max:250',
             ]);
             
-            Contact::create([
+            $contact = Contact::create([
                 'first_name' => $request->get('first_name'),
                 'last_name' => $request->get('last_name'),
                 'email' => $request->get('email'),
                 'phone' => $request->get('phone'),
                 'address' => $request->get('address'),
                 'user_id' => Auth::user()->id
+            ]);
+
+            ContactsCustomFields::create([
+                'field_name' => $request->get('field_name'),
+                'value' => $request->get('value'),
+                'contact_id' => $contact->id
             ]);
 
             return redirect()->route('contacts');

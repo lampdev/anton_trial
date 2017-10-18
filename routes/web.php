@@ -30,3 +30,4 @@ Route::get('/edit_contact/{id}', 'ContactsController@edit')->name('edit_contact'
 Route::post('/edit_contact_post/{id}', 'ContactsController@editPost')->name('edit_contact_post');
 
 Route::get('/delete_contact/{id}', 'ContactsController@delete')->name('delete_contact');
+
